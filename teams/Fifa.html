@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thunder Beacon Wolf</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+
+    <!--I use chart.js to show the graphs-->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-body">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">TBW</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="../index.html">Home</a>
+                    </li>
+                    <li class="nav-item dropdown" data-bs-hover="dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Teams
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="LoL.html">LoL</a></li>
+                            <li><a class="dropdown-item" href="Valorant.html">Valorant</a></li>
+                            <li><a class="dropdown-item" href="CSGO2.html">CS:GO 2</a></li>
+                            <li><a class="dropdown-item" href="Rocket.html">Rocket League</a></li>
+                            <li><a class="dropdown-item" href="Apex.html">Apex Legends</a></li>
+                            <li><a class="dropdown-item" href="Fifa.html">FIFA</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown" data-bs-hover="dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            News
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../news/LoL.html">LoL</a></li>
+                            <li><a class="dropdown-item" href="../news/Valorant.html">Valorant</a></li>
+                            <li><a class="dropdown-item" href="../news/CSGO2.html">CS:GO 2</a></li>
+                            <li><a class="dropdown-item" href="../news/Rocket.html">Rocket League</a></li>
+                            <li><a class="dropdown-item" href="../news/Apex.html">Apex Legends</a></li>
+                            <li><a class="dropdown-item" href="../news/Fifa.html">FIFA</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="../contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="navbar-nav">
+                <a class="nav-link" href="../login.html">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="d-flex flex-column align-items-center">
+                    <canvas id="myChart" width="500" height="250"></canvas>
+                    <table class="table mt-4">
+                        <tr>
+                            <td>
+                                <div class="text-center">
+                                    <button class="btn btn-success" onclick="modifyStats('wins', 1)">+1 Win</button>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-center">
+                                    <button class="btn btn-success" onclick="modifyStats('losses', 1)">+1 Lose</button>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-center">
+                                    <button class="btn btn-success" onclick="modifyStats('games', 1)">+1 Game</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="text-center">
+                                    <button class="btn btn-danger" onclick="modifyStats('wins', -1)">-1 Win</button>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-center">
+                                    <button class="btn btn-danger" onclick="modifyStats('losses', -1)">-1 Lose</button>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-center">
+                                    <button class="btn btn-danger" onclick="modifyStats('games', -1)">-1 Game</button>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+        <h2 class="mt-4 text-center">Yearly Performance</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col" class="w-25">Year</th>
+                    <th scope="col" class="w-25">Tournaments</th>
+                    <th scope="col" class="w-25">Wins</th>
+                    <th scope="col" class="w-25">Losses</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">2023</th>
+                    <td><input type="number" value="7" class="form-control" onkeydown="return false"></td>
+                    <td><input type="number" value="4" class="form-control" onkeydown="return false"></td>
+                    <td><input type="number" value="3" class="form-control" onkeydown="return false"></td>
+                </tr>
+                <tr>
+                    <th scope="row">2022</th>
+                    <td><input type="number" value="6" class="form-control" onkeydown="return false"></td>
+                    <td><input type="number" value="3" class="form-control" onkeydown="return false"></td>
+                    <td><input type="number" value="3" class="form-control" onkeydown="return false"></td>
+                </tr>
+                <tr>
+                    <th scope="row">2021</th>
+                    <td><input type="number" value="4" class="form-control" onkeydown="return false"></td>
+                    <td><input type="number" value="2" class="form-control" onkeydown="return false"></td>
+                    <td><input type="number" value="2" class="form-control" onkeydown="return false"></td>
+                </tr>
+                <tr>
+                    <th scope="row">2020</th>
+                    <td><input type="number" value="4" class="form-control" onkeydown="return false"></td>
+                    <td><input type="number" value="1" class="form-control" onkeydown="return false"></td>
+                    <td><input type="number" value="3" class="form-control" onkeydown="return false"></td>
+                </tr>
+                <tr>
+                    <th scope="row">2019</th>
+                    <td><input type="number" value="3" class="form-control" onkeydown="return false"></td>
+                    <td><input type="number" value="0" class="form-control" onkeydown="return false"></td>
+                    <td><input type="number" value="3" class="form-control" onkeydown="return false"></td>
+                </tr>
+            </tbody>
+        </table><br><br><br>
+
+        <h2 class="mt-4 text-center">Team members</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col" class="w-20">Player</th>
+                    <th scope="col" class="w-20">Nickname</th>
+                    <th scope="col" class="w-20">Role</th>
+                    <th scope="col" class="w-20">Wins</th>
+                    <th scope="col" class="w-20">Losses</th>
+                    <th scope="col" class="w-20"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">
+                        <img src="../images/chousita.jpeg" alt="Player 1" class="img-fluid rounded-circle" style="width: 100px; height: 100px;">
+                    </th>
+                    <td>Chousita</td>
+                    <td>Starting</td>
+                    <td><input type="number" value="6" class="form-control" onkeydown="return false"></td>
+                    <td><input type="number" value="4" class="form-control" onkeydown="return false"></td>
+                    <td>
+                        <button class="btn btn-danger" onclick="deletePlayer(this)">Delete</button>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">
+                        <img src="../images/jotaba.jpeg" alt="Player 1" class="img-fluid rounded-circle" style="width: 100px; height: 100px;">
+                    </th>
+                    <td>Jotaba</td>
+                    <td>Starting</td>
+                    <td><input type="number" value="5" class="form-control" onkeydown="return false"></td>
+                    <td><input type="number" value="4" class="form-control" onkeydown="return false"></td>
+                    <td>
+                        <button class="btn btn-danger" onclick="deletePlayer(this)">Delete</button>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">
+                        <img src="../images/andoni.jpg" alt="Player 1" class="img-fluid rounded-circle" style="width: 100px; height: 100px;">
+                    </th>
+                    <td>Andoni</td>
+                    <td>Substitute</td>
+                    <td><input type="number" value="2" class="form-control" onkeydown="return false"></td>
+                    <td><input type="number" value="4" class="form-control" onkeydown="return false"></td>
+                    <td>
+                        <button class="btn btn-danger" onclick="deletePlayer(this)">Delete</button>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">
+                        <img src="../images/espier.jpg" alt="Player 1" class="img-fluid rounded-circle" style="width: 100px; height: 100px;">
+                    </th>
+                    <td>Sergio Espier</td>
+                    <td>Coach</td>
+                    <td><input type="number" value="14" class="form-control" onkeydown="return false"></td>
+                    <td><input type="number" value="10" class="form-control" onkeydown="return false"></td>
+                    <td>
+                        <button class="btn btn-danger" onclick="deletePlayer(this)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <button class="btn btn-success" onclick="addPlayer()">Add Player</button><br><br><br>
+    </div>   
+    
+    <script>
+        function deletePlayer(button) {
+            var row = button.parentNode.parentNode;
+            row.parentNode.removeChild(row);
+        }
+
+        function addPlayer() {
+            var table = document.querySelector("table tbody");
+            var newRow = table.insertRow(table.rows.length);
+            newRow.innerHTML = `
+                <th scope="row">
+                    <img src="../images/placeholder.jpg" alt="New Player" class="img-fluid rounded-circle" style="width: 100px; height: 100px;">
+                </th>
+                <td>NewPlayer</td>
+                <td>Role</td>
+                <td><input type="number" value="0" class="form-control"></td>
+                <td><input type="number" value="0" class="form-control"></td>
+                <td>
+                    <button class="btn btn-danger" onclick="deletePlayer(this)">Delete</button>
+                </td>`;
+        }
+
+        function modifyStats(stat, value) {
+            switch (stat) {
+                case 'wins':
+                    myChart.data.datasets[0].data[0] += value;
+                    break;
+                case 'losses':
+                    myChart.data.datasets[0].data[1] += value;
+                    break;
+                case 'games':
+                    myChart.data.datasets[0].data[2] += value;
+                    break;
+                default:
+                    break;
+            }
+            myChart.update();
+        }
+
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Wins', 'Loses', 'Games'],
+                datasets: [{
+                    label: 'Team Stats (FIFA) 2024',
+                    data: [1, 3, 4],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <footer class="footer mt-auto py-3 bg-dark text-light">
+        <div class="container text-center">
+            <p>&copy; 2024 霹雳烽火狼 TBW</p>
+            <p>Contact: <a href="mailto:TBW@tbw.com">TBW@tbw.com</a></p>
+        </div>
+    </footer>    
+</body>
+
+</html>
